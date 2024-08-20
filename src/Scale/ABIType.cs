@@ -1,4 +1,6 @@
-﻿namespace Scale;
+﻿using Scale.Core;
+
+namespace Scale;
 
 /// <summary>
 /// Ref: https://solang.readthedocs.io/en/v0.3.3/language/types.html
@@ -13,4 +15,7 @@ public abstract class ABIType
         { "address", () => new AddressType() },
         { "string", () => new StringType() },
     };
+    
+    protected ITypeDecoder Decoder { get; set; }
+    protected ITypeEncoder Encoder { get; set; }
 }

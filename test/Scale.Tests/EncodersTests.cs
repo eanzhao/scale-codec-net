@@ -1,5 +1,4 @@
 using System.Numerics;
-using System.Runtime.InteropServices;
 using AElf;
 using Scale.Encoders;
 using Shouldly;
@@ -18,7 +17,7 @@ public class EncodersTests
     {
         new CompactIntegerTypeEncoder().Encode(value).ToHex(true).ShouldBe(hexValue);
     }
-    
+
     [Theory]
     [InlineData("100000000000000", "0x0b00407a10f35a")]
     public void CompactBigIntegerTypeEncoderTest(string value, string hexValue)
@@ -40,5 +39,12 @@ public class EncodersTests
     public void StringTypeEncoderTest(string value, string hexValue)
     {
         new StringTypeEncoder().Encode(value).ToHex(true).ShouldBe(hexValue);
+    }
+
+    [Theory]
+    [InlineData("2NWU94vDKoF2CeTnor6q9NMZsEJH4Kpg9uee27HNkHCAfidgcr", "0xb488652ba6d7f056a9afd7a414a9047b94dec5ef8170c26922351c36dc2896fa")]
+    public void AddressEncoderTest(string base58Address, string hexValue)
+    {
+        new AddressTypeEncoder().Encode(base58Address).ToHex(true).ShouldBe(hexValue);
     }
 }

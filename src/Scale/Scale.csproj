@@ -6,4 +6,8 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Scale.Core\Scale.Core.csproj" />
+    </ItemGroup>
+
 </Project>
